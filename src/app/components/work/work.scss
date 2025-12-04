@@ -1,0 +1,273 @@
+/* Define media query for consistent reuse */
+$breakpoint-md: 768px;
+
+/* Styles for the host component.
+  This matches the theme from hero-banner.scss
+*/
+:host {
+  display: block; // Ensures the component takes up space
+  width: 100%;
+  background-color: #0B0B1A;
+  position: relative;
+  overflow: hidden;
+
+  // This pseudo-element creates the "violet touch"
+  &::before {
+    content: '';
+    position: absolute;
+    // Positioned to glow from the center
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw; // Large glow area
+    height: 50vh;
+    // The radial gradient
+    background: radial-gradient(ellipse at center, rgba(147, 51, 234, 0.20) 0%, rgba(11, 11, 26, 0) 70%);
+    pointer-events: none; // Allows clicking through it
+  }
+}
+
+/* Main work-experience BEM block.
+*/
+.work-experience {
+  color: #e5e7eb; // Light text
+  font-family: 'Inter', sans-serif;
+  padding: 2rem 0rem;
+  margin: 0 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; // Ensures content is above the ::before gradient
+
+  &__content {
+    width: 100%;
+    max-width: 52rem; // 4xl
+    position: relative;
+    z-index: 10;
+
+    // space-y-6
+    &> :not([hidden])~ :not([hidden]) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  // Title Element
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #f3f4f6;
+  }
+
+  // Grid Element
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); // Mobile-first (1 column)
+    gap: 1.5rem; // 24px
+
+    // 2 columns on medium screens and up
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__description {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgb(107 114 128);
+    line-height: 1.625;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1rem; // md:text-base
+      line-height: 1.5rem;
+    }
+  }
+
+  // Card Element
+  &__card {
+    display: flex;
+    perspective: 1000px; // for smooth scaling and hover effects
+    transform-style: preserve-3d;
+
+    // Entry animation layer
+    &.card-slide-up {
+      animation: cardSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    // Inner wrapper for hover transforms
+    &-inner {
+      background: linear-gradient(110deg, #130428 19.95%, #251043 67.64%, #38126D 107.08%);
+      border-top: 3px solid #763CAC;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 7px 26px 0 rgba(0, 0, 0, 0.12);
+      transition:
+        transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+      transform-origin: center center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    &:hover .work-experience__card-inner {
+      transform: translateY(-10px) scale(1.03);
+      border-color: #a855f7;
+      box-shadow: 0 10px 30px rgba(138, 43, 226, 0.35);
+    }
+
+    // Optional glow layer
+    &-inner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%,
+          rgba(168, 85, 247, 0.15),
+          transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    &:hover .work-experience__card-inner::before {
+      opacity: 1;
+    }
+  }
+
+  &__grid--single {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // Make the card take full width nicely
+    .work-experience__card {
+      width: 100%;
+      // max-width: 40rem; // Looks clean & centered
+    }
+
+    .work-experience__card-inner {
+      width: 100%;
+    }
+  }
+
+
+
+  &__card:nth-child(2),
+  &__card:nth-child(3) {
+    .work-experience__card-inner {
+      background: linear-gradient(96deg, #130428 0.58%, #251043 16.32%, #38126D 29.33%, #261045 45.66%, #190634 54.44%);
+    }
+  }
+
+  // Card Icon Element
+  &__card-icon-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      max-width: 48px;
+      max-height: 48px;
+      color: #c084fc; // Light purple (violet-400)
+    }
+  }
+
+  // Card Title Element
+  &__card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+    color: #f3f4f6; // Off-white
+  }
+
+  // Card Description Element
+  &__card-description {
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    line-height: 1.5;
+  }
+
+  // Card Button Element
+  &__card-button {
+    background-color: transparent;
+    border: 1px solid #584c75; // Dark purple border
+    color: #d8b4fe; // Light purple text (violet-300)
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    // The hover state is handled by the parent .work-experience__card:hover
+  }
+}
+
+.work-experience__more {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.work-experience__more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #584c75;
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: #d8b4fe;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 500;
+  flex-shrink: 0;
+
+  .work-experience__more-icon {
+    transition: transform 0.25s ease, opacity 0.3s ease;
+    opacity: 0.85;
+  }
+
+  &:hover {
+    background: rgba(118, 60, 172, 0.2);
+    box-shadow: 0 0 12px rgba(118, 60, 172, 0.4);
+    transform: translateY(-3px);
+
+    .work-experience__more-icon {
+      transform: translate(4px, -4px); // arrow flies up-right
+      opacity: 1;
+    }
+  }
+}
+
+/* --- Slide-up Animation --- 
+*/
+
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Utility class to trigger the animation
+.card-slide-up {
+  animation: cardSlideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}

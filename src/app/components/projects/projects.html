@@ -1,0 +1,72 @@
+<section class="projects" id="projects" #observeProject [class.projects--in-view]="isVisible()">
+
+  <!-- Background stars -->
+  <div class="projects__stars">
+    <div class="projects__stars-group projects__stars-group--1"></div>
+    <div class="projects__stars-group projects__stars-group--2"></div>
+    <div class="projects__stars-group projects__stars-group--3"></div>
+  </div>
+
+  <div class="projects__container">
+    <header class="projects__header">
+      <h2 class="projects__title">Featured Projects</h2>
+      <p class="projects__subtitle">A selection of my favorite projects.</p>
+    </header>
+
+    @for (project of projects; track project.id; let i = $index) {
+    <div class="projects__card" [class.projects__card--reversed]="i % 2 !== 0"
+      [class.projects__card--slide-right]="i % 2 === 0 && isVisible()"
+      [class.projects__card--slide-left]="i % 2 !== 0 && isVisible()">
+
+      <!-- Project Image -->
+      <div class="projects__image-container">
+        <div class="projects__image-glow"></div>
+        <img [ngSrc]="project.imagePath" alt="Mockup of {{ project.title }}" class="projects__image" width="600"
+          height="400" priority="true" />
+      </div>
+
+      <!-- Project Details -->
+      <div class="projects__details">
+        <span class="projects__details-gradient"></span>
+        <span class="projects__category">{{ project.category }}</span>
+        <h3 class="projects__name">{{ project.title }}</h3>
+
+        <div class="projects__description" [style.margin-left.px]="(i % 2 === 0) ? -60 : 0"
+          [style.margin-right.px]="(i % 2 !== 0) ? -60 : 0">
+          <svg class="projects__description-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+            fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+              clip-rule="evenodd" />
+          </svg>
+          <p class="projects__description-text">{{ project.description }}</p>
+          <button class="projects__description-button" (click)="openProjectModal(project); $event.stopPropagation()">
+            Responsibilities
+          </button>
+        </div>
+
+        <div class="projects__tags">
+          @for (tag of project.tags; track tag) {
+          <span class="projects__tag">{{ tag }}</span>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="projects__more">
+    <p class="projects__more-description">
+      Interested in more? Check out my Github.
+    </p>
+    <button class="projects__more-button" (click)="navigateToGithub()">
+      View All
+      <svg class="projects__more-icon" width="18" height="18" viewBox="0 0 24 24">
+        <path d="M14 3h7v7m0-7L10 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M5 5v14h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <app-project-modal *ngIf="selectedProject()" [project]="selectedProject()" mode="list" (close)="closeProjectModal()">
+  </app-project-modal>
+</section>

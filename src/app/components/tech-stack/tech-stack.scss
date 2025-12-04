@@ -1,0 +1,424 @@
+/* Define media query for consistent reuse */
+$breakpoint-md: 768px;
+
+@function random_range($min, $max) {
+  $rand: random();
+  $range: $max - $min;
+  @return $min +$rand * $range;
+}
+
+
+@mixin star-group($n, $size, $opacity, $duration) {
+  $shadows: (
+  );
+
+@for $i from 1 through $n {
+  $x: random_range(0, 100);
+  $y: random_range(0, 100);
+  $shadows: append($shadows, #{$x}vw #{$y}vh rgba(255, 255, 255, $opacity), comma);
+}
+
+width: $size;
+height: $size;
+background: transparent;
+box-shadow: $shadows;
+animation: animStar $duration linear infinite;
+
+&:after {
+  content: '';
+  position: absolute;
+  top: -100vh;
+  width: $size;
+  height: $size;
+  background: transparent;
+  box-shadow: $shadows;
+}
+}
+
+:host {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.tech-stack {
+    display: block;
+    width: 100%;
+    min-height: 130vh;
+    background: radial-gradient(circle at center, #0B0B1A 100%, #000 100%);
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+        min-height: 115vh;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        min-height: 120vh;
+    }
+}
+
+/* Default hidden state for sections */
+.header-text,
+.top-feeders,
+.central-focus,
+.orbit-system {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* When the host is visible — fade in each block sequentially */
+:host(.in-view) .header-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+:host(.in-view) .top-feeders {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+:host(.in-view) .central-focus {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.7s;
+}
+
+:host(.in-view) .orbit-system {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.0s;
+}
+
+
+/* Container */
+.tech-stack-container {
+    width: 100%;
+    max-width: 52rem; // Large ellipse width (~1024px)
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0px 20px;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    @media (max-width: $breakpoint-md) {
+        max-width: unset;
+        width: unset;
+        margin: unset
+    }
+}
+
+/* Header text */
+.header-text {
+    text-align: center;
+    margin-bottom: 6rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 700px;
+
+    p {
+        margin: 0;
+        color: #c9c9e0;
+    }
+
+    .highlight {
+        color: #c77dff;
+        font-weight: 600;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        margin-bottom: 7rem;
+        max-width: 22.5rem;
+    }
+}
+
+/* Top feeder icons */
+.top-feeders {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-icons {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 32rem;
+    gap: 24px;
+    justify-content: center;
+    z-index: 6;
+
+    @media (max-width: $breakpoint-md) {
+        max-width: 22.5rem;
+    }
+}
+
+.top-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(40, 10, 90, 0.45);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(120, 70, 220, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 0 20px rgba(160, 90, 255, 0.7);
+    }
+
+    img {
+        width: 70%;
+        height: 70%;
+        filter: drop-shadow(0 0 5px rgba(160, 60, 255, 0.6));
+    }
+}
+
+/* Connector lines */
+.connectors {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    overflow: visible;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+
+    svg:nth-child(1) {
+        margin-right: -50px;
+    }
+
+    svg:nth-child(6) {
+        margin-left: -50px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+
+        svg:nth-child(1),
+        svg:nth-child(3),
+        svg:nth-child(4),
+        svg:nth-child(6) {
+            display: none;
+        }
+
+        svg:nth-child(2),
+        svg:nth-child(5) {
+            height: 200px;
+        }
+    }
+}
+
+.connector {
+    fill: none;
+    stroke: rgba(160, 110, 255, 0.6);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: draw-line 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes draw-line {
+    from {
+        stroke-dashoffset: 400;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Sigma center */
+.central-focus {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    padding-right: 20px;
+    margin-top: 40px;
+}
+
+.sigma-glow-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+            #9d4edd 0%,
+            rgba(157, 78, 221, 0.6) 30%,
+            rgba(157, 78, 221, 0) 80%);
+    animation: pulse-glow 3s infinite alternate ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sigma-icon {
+    width: 60%;
+    height: 60%;
+    color: #fff;
+    filter: drop-shadow(0 0 20px #b366ff);
+}
+
+@keyframes pulse-glow {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 40px rgba(157, 78, 221, 0.8), 0 0 80px rgba(157, 78, 221, 0.5);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 60px rgba(157, 78, 221, 1), 0 0 120px rgba(157, 78, 221, 0.7);
+    }
+}
+
+/* Orbit system */
+.orbit-system {
+    position: absolute;
+    width: 100%;
+    max-width: 64rem;
+    height: 30rem; // Large ellipse
+    perspective: 200px;
+    overflow: visible;
+    z-index: 3;
+    top: 18rem;
+    right: .5rem;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1.50px solid rgba(200, 160, 255, 0.9);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scaleY(0.55) rotateX(12deg);
+    animation: orbit-spin 25s linear infinite;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards, orbit-spin 25s linear infinite 1s;
+    pointer-events: none;
+}
+
+/* Planet icons */
+.planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 42px;
+    height: 42px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 14px rgba(149, 88, 213, 0.85);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translate(-50%, -50%) scale(1.3);
+        box-shadow: 0 0 35px rgb(131, 79, 162);
+    }
+}
+
+.projects__stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.projects__stars-group--1 {
+  @include star-group(70, 1px, 0.8, 50s);
+}
+
+.projects__stars-group--2 {
+  @include star-group(50, 2px, 0.6, 100s);
+}
+
+.projects__stars-group--3 {
+  @include star-group(30, 3px, 0.4, 150s);
+}
+
+/* Animations */
+@keyframes orbit-spin {
+    0% {
+        transform: translate(-50%, -50%) scaleY(0.55) rotateX(12deg) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scaleY(0.55) rotateX(12deg) rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Responsive */
+@media (max-width: $breakpoint-md) {
+    .orbit-system {
+        width: 90%;
+        height: 18rem;
+        top: 24.5rem;
+        left: .9rem;
+    }
+
+    .planet {
+        width: 28px;
+        height: 28px;
+    }
+
+    .central-focus {
+        width: 100px;
+        height: 100px;
+        margin-top: 60px;
+        margin-left: 12px;
+    }
+
+    .top-feeders {
+        height: 180px;
+    }
+}

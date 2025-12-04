@@ -1,0 +1,57 @@
+<div class="modal__backdrop" (click)="handleClose()"></div>
+
+<div class="modal">
+  <div class="modal__content" (click)="$event.stopPropagation()">
+
+    <ng-container *ngIf="mode === 'timeline'"></ng-container>
+
+    <h2 class="modal__title">{{ project?.title }}</h2>
+
+    <!-- =======================================
+         TIMELINE MODE
+    ======================================= -->
+    <div *ngIf="mode === 'timeline' && isTimeline(project)" class="timeline">
+
+      <div class="timeline__step" *ngFor="let step of project.timeline">
+        <div class="timeline__dot"></div>
+
+        <div class="timeline__body">
+          <h3 class="timeline__role">{{ step.role }}</h3>
+
+          <p class="timeline__meta">
+            {{ step.type }} • {{ step.duration }} • {{ step.location }}
+          </p>
+
+          <p class="timeline__description">{{ step.description }}</p>
+
+          <p class="timeline__skills">
+            <svg class="timeline__icon" width="16" height="16" viewBox="0 0 24 24">
+              <path
+                d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5 12 2Z"
+                stroke="#b892ff"
+                stroke-width="1.5"
+                fill="none"
+              />
+            </svg>
+            {{ step.skills.join(', ') }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =======================================
+         LIST MODE (RESPONSIBILITIES)
+    ======================================= -->
+    <div *ngIf="mode === 'list' && isList(project)" class="timeline responsibilities">
+
+      <div class="timeline__step" *ngFor="let item of project.responsibilities">
+        <div class="timeline__dot responsibilities__dot"></div>
+        <p class="timeline__description">{{ item }}</p>
+      </div>
+
+    </div>
+
+    <button class="modal__close-button" (click)="handleClose()">Close</button>
+  </div>
+</div>

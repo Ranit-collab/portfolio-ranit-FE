@@ -1,0 +1,19 @@
+<section class="chat">
+  <div class="chat__ctr" #chatContainer>
+    <header class="chat__header">
+      <h2 class="chat__title">Talk to My Digital Twin</h2>
+      <p class="chat__subtitle">AI-Powered Portfolio Chat where you can ask any question about me.</p>
+    </header>
+    <div class="chat__window">
+      <div *ngFor="let msg of messages()" class="chat__message" [class.chat__message--user]="msg.sender === 'user'"
+        [class.chat__message--ai]="msg.sender === 'ai'">
+        <div class="chat__bubble" [innerHTML]="formatMessage(msg.text)"></div>
+      </div>
+    </div>
+    <div class="chat__input-box">
+      <input [ngModel]="input()" (input)="input.set($event.target.value)" (keyup.enter)="sendMessage()"
+        placeholder="Ask anything..." class="chat__input" [disabled]="isLoading()" />
+      <button (click)="sendMessage()" class="chat__send-btn" [disabled]="isLoading()">➤</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+<section class="tech-stack" id="techStack">
+
+    <div class="projects__stars">
+        <div class="projects__stars-group projects__stars-group--1"></div>
+        <div class="projects__stars-group projects__stars-group--2"></div>
+        <div class="projects__stars-group projects__stars-group--3"></div>
+    </div>
+
+    <div class="tech-stack-container">
+
+
+        <!-- Header text -->
+        <div class="header-text">
+            <p>
+                I'm currently looking to join a
+                <span class="highlight">cross-functional team</span>
+            </p>
+            <p>that values improving people's lives through accessible design</p>
+        </div>
+
+        <!-- Top row of icons -->
+        <div class="top-feeders">
+            <div class="top-icons">
+                <div *ngFor="let tech of technologyCategories[0].technologies" class="top-icon">
+                    <img [src]="tech.iconPath" [alt]="tech.name" />
+                </div>
+            </div>
+
+            <!-- SVG connectors -->
+            <div class="connectors">
+                <svg class="connectors__first" xmlns="http://www.w3.org/2000/svg" width="119" height="301"
+                    viewBox="0 0 119 301" fill="none">
+                    <path d="M0.368103 0.338379C44.0348 47.8384 125.068 192.838 117.868 300.838"
+                        stroke="url(#paint0_linear_16_234)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_234" x1="64.1203" y1="25.3384" x2="64.1203" y2="300.838"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="67" height="311" viewBox="0 0 67 311" fill="none">
+                    <path d="M0.368103 0.338379C44.0348 47.8384 72.5684 202.338 65.3684 310.338"
+                        stroke="url(#paint0_linear_16_235)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_235" x1="36.7906" y1="23.3384" x2="36.7906" y2="310.339"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="314" viewBox="0 0 22 314" fill="none">
+                    <path d="M0.483154 0.128601C19.7366 72.4607 21.4832 253.948 21.4832 313.129"
+                        stroke="url(#paint0_linear_16_236)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_236" x1="23.4832" y1="26.1286" x2="23.4832" y2="323.129"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="292" viewBox="0 0 36 292" fill="none">
+                    <path d="M35 0.138336C15.9999 66.1383 0.500002 237.638 0.5 291.638"
+                        stroke="url(#paint0_linear_16_233)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_233" x1="9.75" y1="17.1383" x2="9.75" y2="288.138"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="72" height="271" viewBox="0 0 72 271" fill="none">
+                    <path d="M70.9888 0.338379C27.3221 47.8384 -5.71131 162.338 1.48869 270.338"
+                        stroke="url(#paint0_linear_16_232)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_232" x1="35.7444" y1="0.338379" x2="35.7444" y2="270.338"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg class="connectors__last" xmlns="http://www.w3.org/2000/svg" width="124" height="278"
+                    viewBox="0 0 124 278" fill="none">
+                    <path d="M122.927 0.338379C79.2608 47.8384 -6.27251 169.838 0.927494 277.838"
+                        stroke="url(#paint0_linear_16_231)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_16_231" x1="61.7137" y1="0.338379" x2="61.7137" y2="277.838"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3D1768" />
+                            <stop offset="1" stop-color="#3D1768" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+        </div>
+
+        <!-- Central glowing Sigma -->
+        <div class="central-focus">
+            <div class="sigma-glow-wrapper">
+                <svg class="sigma-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2zm-1 14H7V6h10v12zm-4.5-9h3a.5.5 0 000-1h-3a.5.5 0 000 1zM14 11h-4a.5.5 0 000 1h4a.5.5 0 000-1zM14 15h-4a.5.5 0 000 1h4a.5.5 0 000-1z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Orbit system -->
+        <div class="orbit-system">
+            <div *ngFor="let tech of visibleTechnologies; let i = index" class="orbit" [style.width]="getOrbitSize(i)"
+                [style.height]="getOrbitSize(i)" [style.animation-duration]="getOrbitDuration(i)">
+                <div class="planet" [style.background-image]="'url(' + tech.iconPath + ')'" [attr.title]="tech.name">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+<header class="nav" [class.nav--hidden]="isHidden">
+
+  <div class="nav__container">
+
+    <!-- Logo -->
+    <div class="nav__logo" (click)="scrollTo('home')">
+      <img src="../../../assets/RS.svg" alt="Logo" class="nav__logo-img" />
+    </div>
+
+    <!-- Desktop Menu -->
+    <nav class="nav__menu nav__menu--desktop">
+      <button class="nav__item" (click)="scrollTo('work')">Work</button>
+      <button class="nav__item" (click)="scrollTo('projects')">Projects</button>
+      <button class="nav__item" (click)="scrollTo('about')">About</button>
+      <button class="nav__item" (click)="scrollTo('contact')">Contact</button>
+    </nav>
+
+    <!-- Hamburger Icon (Mobile) -->
+    <div class="nav__hamburger" [class.nav__hamburger--open]="isMenuOpen" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- Side Drawer -->
+  <div class="nav__drawer-backdrop" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+
+  <div class="nav__drawer" [class.nav__drawer--open]="isMenuOpen">
+    <button class="nav__drawer-item" (click)="scrollTo('work')">Work</button>
+    <button class="nav__drawer-item" (click)="scrollTo('projects')">Projects</button>
+    <button class="nav__drawer-item" (click)="scrollTo('about')">About</button>
+    <button class="nav__drawer-item" (click)="scrollTo('contact')">Contact</button>
+  </div>
+
+</header>

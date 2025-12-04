@@ -1,0 +1,41 @@
+<section class="work-experience" id="work">
+  <div class="work-experience__content">
+    <h2 class="work-experience__title" #headingEl>Work Experience</h2>
+
+    <div class="work-experience__grid" [class.work-experience__grid--single]="workItems.length === 1">
+
+      <div *ngFor="let work of workItems" #cardEl class="work-experience__card card-slide-up"
+        (click)="navigateToWork(work.id)">
+
+        <div class="work-experience__card-inner">
+          <div class="work-experience__card-icon-wrapper">
+            <img [src]="work.iconSvgPath" [alt]="work.title" />
+
+            <div>
+              <h3 class="work-experience__card-title">{{ work.title }}</h3>
+              <p class="work-experience__card-description">{{ work.description }}</p>
+
+              <button class="work-experience__card-button" (click)="openModal(work); $event.stopPropagation()">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="work-experience__more" #moreEl>
+        <p class="work-experience__description">
+          Interested in more? Check out my LinkedIn for a full list of experiences (including interships).
+        </p>
+        <button class="work-experience__more-button" (click)="navigateToLinkedin()">
+          View All
+          <svg class="work-experience__more-icon" width="18" height="18" viewBox="0 0 24 24">
+            <path d="M14 3h7v7m0-7L10 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M5 5v14h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-project-modal *ngIf="selectedWork() as proj" [project]="proj" (close)="closeModal()"> </app-project-modal>
+</section>
