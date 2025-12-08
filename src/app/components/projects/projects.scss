@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:list";
+
 :host {
   display: block;
   overflow: hidden;
@@ -240,9 +243,9 @@
 }
 
 @function random_range($min, $max) {
-  $rand: random();
+  $rand: math.random();
   $range: $max - $min;
-  @return $min +$rand * $range;
+  @return $min + ($rand * $range);
 }
 
 @mixin star-group($n, $size, $opacity, $duration) {
@@ -252,7 +255,7 @@
 @for $i from 1 through $n {
   $x: random_range(0, 100);
   $y: random_range(0, 100);
-  $shadows: append($shadows, #{$x}vw #{$y}vh rgba(255, 255, 255, $opacity), comma);
+  $shadows: list.append($shadows, #{$x}vw #{$y}vh rgba(255, 255, 255, $opacity), comma);
 }
 
 width: $size;

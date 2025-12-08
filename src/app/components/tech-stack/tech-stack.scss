@@ -1,9 +1,12 @@
+@use "sass:math";
+@use "sass:list";
+
 $breakpoint-md: 768px;
 
 @function random_range($min, $max) {
-  $rand: random();
+  $rand: math.random();
   $range: $max - $min;
-  @return $min +$rand * $range;
+  @return $min + ($rand * $range);
 }
 
 
@@ -14,7 +17,7 @@ $breakpoint-md: 768px;
 @for $i from 1 through $n {
   $x: random_range(0, 100);
   $y: random_range(0, 100);
-  $shadows: append($shadows, #{$x}vw #{$y}vh rgba(255, 255, 255, $opacity), comma);
+  $shadows: list.append($shadows, #{$x}vw #{$y}vh rgba(255, 255, 255, $opacity), comma);
 }
 
 width: $size;
