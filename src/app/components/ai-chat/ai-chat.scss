@@ -4,9 +4,7 @@
   position: relative;
 }
 
-/* ------------------------------
-   Section Base
---------------------------------*/
+// Section Base
 .chat {
   color: #e0e0e0;
   background-color: #0B0B1A;
@@ -18,9 +16,6 @@
   justify-content: center;
 }
 
-/* ------------------------------
-   Container
---------------------------------*/
 .chat__ctr {
   max-width: 52rem;
   width: 100%;
@@ -37,9 +32,6 @@
   transform: translateY(0);
 }
 
-/* ------------------------------
-   Header Animations
---------------------------------*/
 .chat__header {
   margin-bottom: 2rem;
   opacity: 0;
@@ -64,9 +56,6 @@
   color: #a0a0b0;
 }
 
-/* ------------------------------
-   Chat Window
---------------------------------*/
 .chat__window {
   flex: 1;
   overflow-y: auto;
@@ -75,12 +64,9 @@
   border-radius: 12px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(120, 80, 200, 0.25);
-  max-height: 400px; /* Scroll only inside */
+  max-height: 400px;
 }
 
-/* ------------------------------
-   Messages
---------------------------------*/
 .chat__message {
   margin: 0.5rem 0;
   display: flex;
@@ -119,9 +105,6 @@
   border: 1px solid rgba(120, 80, 200, 0.4);
 }
 
-/* ------------------------------
-   Input Section
---------------------------------*/
 .chat__input-box {
   display: flex;
   gap: 0.5rem;

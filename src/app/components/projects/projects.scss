@@ -276,7 +276,6 @@ animation: animStar $duration linear infinite;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // width: 100%;
   max-width: 52rem;
   margin: 0 auto;
   padding: 0 20px;
@@ -291,13 +290,13 @@ animation: animStar $duration linear infinite;
   line-height: 1.625;
 
   @media (min-width: 768px) {
-    font-size: 1rem; // md:text-base
+    font-size: 1rem;
     line-height: 1.5rem;
   }
 }
 
 .projects__more-button {
-  // display: inline-flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   background: transparent;
@@ -322,7 +321,7 @@ animation: animStar $duration linear infinite;
     transform: translateY(-3px);
 
     .projects__more-icon {
-      transform: translate(4px, -4px); // arrow flies up-right
+      transform: translate(4px, -4px);
       opacity: 1;
     }
   }
@@ -362,7 +361,6 @@ animation: animStar $duration linear infinite;
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
 
   .projects__card,
