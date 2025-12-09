@@ -20,7 +20,18 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/google73303c4b7e10a0f5.html",
+              {
+                "glob": "sitemap.xml",
+                "input": "src/assets/",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "src/assets/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -75,7 +86,18 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/google73303c4b7e10a0f5.html",
+              {
+                "glob": "sitemap.xml",
+                "input": "src/assets/",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "src/assets/",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
