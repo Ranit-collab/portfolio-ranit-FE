@@ -1,5 +1,6 @@
 <section class="home">
-  <app-header></app-header>
+  <app-action-bar (close)="handleActionBarClosed()"></app-action-bar>
+  <app-header [hasActionBar]="isActionBarVisible()"></app-header>
   <app-hero></app-hero>
   <app-work></app-work>
   <app-tech-stack></app-tech-stack>

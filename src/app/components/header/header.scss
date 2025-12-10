@@ -5,17 +5,21 @@
 
 .nav {
   position: sticky;
-  top: 0;
+  top: 40px;
   width: 100%;
   background: #100526;
   z-index: 100;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
-  transition: transform 0.35s ease-in-out;
+  transition: top 0.35s ease-in-out, transform 0.35s ease-in-out;
 }
 
 .nav--hidden {
   transform: translateY(-100%);
+}
+
+.nav--no-action {
+  top: 0 !important;
 }
 
 .nav__container {

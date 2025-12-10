@@ -46,7 +46,7 @@ animation: animStar $duration linear infinite;
 .tech-stack {
     display: block;
     width: 100%;
-    min-height: 130vh;
+    min-height: 970px;
     background: radial-gradient(circle at center, #0B0B1A 100%, #000 100%);
     color: #e0e0e0;
     font-family: 'Inter', sans-serif;
@@ -65,11 +65,11 @@ animation: animStar $duration linear infinite;
     }
 
     @media (max-width: 1080px) {
-        min-height: 115vh;
+        min-height: 900px;
     }
 
     @media (max-width: $breakpoint-md) {
-        min-height: 120vh;
+        min-height: 750px;
     }
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.scss'
 })
 export class Header {
+
+  @Input() hasActionBar = true;
 
   /** Tracks previous scroll position to detect scroll direction */
   lastScrollY = 0;

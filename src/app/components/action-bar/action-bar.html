@@ -1,0 +1,12 @@
+<div class="action-bar" *ngIf="isVisible()" [class.action-bar--hidden]="!isVisible()">
+    <div class="action-bar__container">
+        <span class="action-bar__text" (click)="scrollToRag()">
+            🚀 Try my AI RAG Agent — Ask about me!
+        </span>
+
+        <button class="action-bar__close" (click)="handleClose()">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</div>

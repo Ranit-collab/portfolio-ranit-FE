@@ -1,4 +1,4 @@
-<header class="nav" [class.nav--hidden]="isHidden">
+<header class="nav" [class.nav--hidden]="isHidden" [class.nav--no-action]="!hasActionBar">
 
   <div class="nav__container">
 
@@ -11,7 +11,7 @@
     <nav class="nav__menu nav__menu--desktop">
       <button class="nav__item" (click)="scrollTo('work')">Work</button>
       <button class="nav__item" (click)="scrollTo('projects')">Projects</button>
-      <button class="nav__item" (click)="scrollTo('about')">About</button>
+      <button class="nav__item" (click)="scrollTo('techStack')">Tech Stack</button>
       <button class="nav__item" (click)="scrollTo('contact')">Contact</button>
     </nav>
 
