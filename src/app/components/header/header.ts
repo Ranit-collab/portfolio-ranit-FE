@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 export class Header {
 
   @Input() hasActionBar = true;
+
+  @Output() resumeClick = new EventEmitter<void>();
 
   /** Tracks previous scroll position to detect scroll direction */
   lastScrollY = 0;
@@ -56,6 +58,10 @@ export class Header {
   /** Ensures the mobile drawer is closed */
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  openResumeModal() {
+    this.resumeClick.emit();
   }
 
   /**

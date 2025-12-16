@@ -1,0 +1,18 @@
+<div class="resume-modal__backdrop" (click)="handleClose()"></div>
+
+<div class="resume-modal" (click)="$event.stopPropagation()">
+  <div class="resume-modal__content">
+
+    <h2 class="resume-modal__title">Resume Options</h2>
+
+    <p class="resume-modal__text">Choose an option below:</p>
+
+    <div class="resume-modal__buttons">
+      <button class="resume-btn" (click)="previewResume()">Preview</button>
+      <button class="resume-btn" (click)="downloadResume()">Download</button>
+    </div>
+
+    <button class="resume-modal__close" (click)="handleClose()">Close</button>
+
+  </div>
+</div>

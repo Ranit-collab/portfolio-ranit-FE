@@ -74,8 +74,15 @@
 }
 
 @keyframes fadeMessage {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chat__message--user {
@@ -154,7 +161,7 @@
   transform: none;
 }
 
-.chat__bubble >a {
+.chat__bubble>a {
   color: #9a68ff;
   font-weight: 600;
   text-decoration: underline;
@@ -162,4 +169,16 @@
 
 .chat__bubble a:hover {
   opacity: 0.8;
+}
+
+.chat__disclaimer {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(107 114 128);
+  line-height: 1.625;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }

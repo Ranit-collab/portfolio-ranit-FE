@@ -12,7 +12,8 @@
       <button class="nav__item" (click)="scrollTo('work')">Work</button>
       <button class="nav__item" (click)="scrollTo('projects')">Projects</button>
       <button class="nav__item" (click)="scrollTo('techStack')">Tech Stack</button>
-      <button class="nav__item" (click)="scrollTo('contact')">Contact</button>
+      <button class="nav__item" (click)="scrollTo('footer')">Contact</button>
+      <button class="nav__item" (click)="openResumeModal()">Resume</button>
     </nav>
 
     <!-- Hamburger Icon (Mobile) -->
@@ -29,8 +30,9 @@
   <div class="nav__drawer" [class.nav__drawer--open]="isMenuOpen">
     <button class="nav__drawer-item" (click)="scrollTo('work')">Work</button>
     <button class="nav__drawer-item" (click)="scrollTo('projects')">Projects</button>
-    <button class="nav__drawer-item" (click)="scrollTo('about')">About</button>
-    <button class="nav__drawer-item" (click)="scrollTo('contact')">Contact</button>
+    <button class="nav__drawer-item" (click)="scrollTo('techStack')">About</button>
+    <button class="nav__drawer-item" (click)="scrollTo('footer')">Contact</button>
+    <button class="nav__drawer-item" (click)="openResumeModal()">Resume</button>
   </div>
 
 </header>

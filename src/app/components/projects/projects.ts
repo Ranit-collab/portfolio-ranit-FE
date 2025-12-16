@@ -88,6 +88,7 @@ export class Projects implements AfterViewInit, OnDestroy {
       tags: ['React Native', 'TypeScript', 'Responsys', 'RTK Query', 'GlueStack', 'Java 8'],
       imagePath: '../../../assets/uopx.png',
       responsibilities: [
+        "Worked on core modules in the microservices architecture using Spring Boot, implementing SAGA workflows using Netflix Conductor and REST API with reduced latency <= 100ms and Kafka.",
         "Delivered cross-platform mobile applications for iOS and Android using React Native, increasing development efficiency by 20%.",
         "Improved performance by 15% with optimized state management via Redux + RTK Query and integrated Responsys push notifications.",
         "Added Adobe Analytics tracking to improve feature insights and enhance user engagement by 20%."

@@ -41,6 +41,7 @@ $breakpoint-md: 768px;
 
     @media (max-width: $breakpoint-md) {
         padding-top: 3rem;
+        padding-left: 0rem;
     }
 
     &__content {

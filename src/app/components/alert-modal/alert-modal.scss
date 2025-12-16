@@ -1,0 +1,138 @@
+/* Backdrop — same as modal.scss */
+.resume-modal__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 501;
+    animation: fadeBackdrop 0.4s ease;
+}
+
+@keyframes fadeBackdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.resume-modal {
+    position: fixed;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    inset: 0;
+    z-index: 502;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+
+    padding: 4rem 1rem;
+
+    .resume-modal__content {
+        position: relative;
+        background: #0B0B1A;
+        border: 1px solid #380d5f;
+        border-radius: 18px;
+        padding: 2rem;
+        width: 90%;
+        max-width: 480px;
+        color: white;
+        animation: modalEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 40px rgba(118, 60, 172, 0.45);
+
+        text-align: center;
+    }
+}
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes glowPulse {
+    from {
+        transform: scale(0.85);
+        opacity: 0.6;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Title */
+.resume-modal__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* Text */
+.resume-modal__text {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons container */
+.resume-modal__buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons styled like modal close button */
+.resume-btn {
+    flex: 1;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #584c75;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .25s ease;
+
+    &:hover {
+        background: rgba(118, 60, 172, 0.25);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(118, 60, 172, 0.4);
+    }
+}
+
+/* Close button — full width same as modal */
+.resume-modal__close {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 12px;
+    border: 1px solid #584c75;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .25s ease;
+
+    &:hover {
+        background: rgba(118, 60, 172, 0.25);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(118, 60, 172, 0.4);
+    }
+}
